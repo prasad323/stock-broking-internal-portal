@@ -1,82 +1,181 @@
 # Stock Broking Internal Operations Portal
 
 ## Overview
-This project was developed for the Arham Fintech Software Engineer Technical Assessment.
 
-### Components
-- **mock-bse-api** – Simulates BSE APIs with configurable delay and random failures.
-- **internal-portal-api** – Synchronizes data, stores it in MongoDB, exposes secure APIs, calculates incentives, and broadcasts updates using Socket.IO.
-- **internal-portal-frontend** – React dashboard for Managers and Employees.
+This project was developed as part of the **Arham Fintech Software Engineer Technical Assessment**.
+
+The system consists of a **Mock BSE API** and an **Internal Operations Portal** that synchronizes client, trade, employee, and mapping data. It calculates employee incentives and provides separate dashboards for Managers and Employees with real-time updates.
+
+---
+
+## Project Components
+
+### 1. Mock BSE API
+- Simulates BSE Exchange APIs
+- Configurable response delay
+- Random mid-pull failures (~20%)
+- Seeded with clients, trades, employees, and mappings
+
+### 2. Internal Portal API
+- Synchronizes data from the Mock BSE API
+- Stores data in MongoDB
+- Provides secure REST APIs
+- Calculates employee incentives
+- Broadcasts live updates using Socket.IO
+
+### 3. Internal Portal Frontend
+- React (Vite) application
+- Separate dashboards for Managers and Employees
+- Real-time data updates
+- Responsive Bootstrap UI
+
+---
 
 ## Tech Stack
-- Node.js, Express.js
-- MongoDB + Mongoose
+
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
 - React (Vite)
 - Bootstrap
 - JWT Authentication
 - Socket.IO
 - Axios
-- node-cron
+- Node-Cron
+
+---
 
 ## Features
+
 ### Manager
+
 - Dashboard
 - Clients
 - Trades
 - Employees
 - Client Mappings
-- Incentives
+- Incentives (All Employees)
 
 ### Employee
+
 - Dashboard
 - My Clients
 - My Incentive
 
+---
+
 ## Synchronization
-- Cron job periodically syncs data from Mock BSE API.
-- Retry mechanism handles temporary failures.
-- Upsert prevents duplicate records.
-- Socket.IO pushes live updates to connected users.
 
-## Running
+- Periodic synchronization using Cron Jobs
+- Retry mechanism for temporary API failures
+- Upsert operations prevent duplicate records
+- Data remains available even when the Mock BSE API is unavailable
+- Socket.IO automatically updates connected users when fresh data is synchronized
 
-### Mock API
-```
+---
+
+## Project Setup
+
+### Mock BSE API
+
+```bash
 npm install
 npm run seed
 npm start
 ```
 
-### Internal API
-```
+### Internal Portal API
+
+```bash
 npm install
 npm start
 ```
 
 ### Frontend
-```
+
+```bash
 npm install
 npm run dev
 ```
 
+---
+
+## Demo Credentials
+
+### Manager Login
+Username: manager
+Password:123456
+
+### Employee Login
+Username: employee1
+Password: 123456
+
 ## Environment Variables
 
-Mock API
-- PORT
-- MONGO_URI
-- BSE_DELAY
-- BSE_FAILURE_RATE
+### Mock BSE API
 
-Internal API
-- PORT
-- MONGO_URI
-- JWT_SECRET
-- MOCK_API_URL
+```env
+PORT=
+MONGO_URI=
+BSE_DELAY=
+BSE_FAILURE_RATE=
+```
+
+### Internal Portal API
+
+```env
+PORT=
+MONGO_URI=
+JWT_SECRET=
+JWT_EXPIRES_IN=
+MOCK_API_URL=
+```
+
+---
+
+## Deployment
+
+### Frontend
+- Vercel :https://stock-broking-internal-portal.vercel.app/login
+
+### Internal Portal API
+- Render:https://internal-portal-api.onrender.com
+
+
+### Mock BSE API
+- Render: https://mock-bse-apii.onrender.com
+
+---
 
 ## Scalability
-- MongoDB indexing
-- Pagination
-- Background synchronization
-- Horizontal scaling
-- Redis cache
-- Message queues (RabbitMQ/Kafka)
+
+To support **100× more clients and trades**, the application can be scaled using:
+
+- **MongoDB Indexing** for faster searches, filtering, and aggregations.
+- **Pagination** to efficiently load large datasets.
+- **Background Synchronization** using scheduled Cron Jobs to avoid blocking user requests.
+- **Horizontal Scaling** by deploying multiple backend instances behind a load balancer.
+- **Redis Caching** to reduce database load for frequently accessed data.
+- **Message Queues (RabbitMQ/Kafka)** for reliable asynchronous processing of large synchronization jobs.
+
+---
+
+## Architecture Highlights
+
+- Mock BSE API simulates unreliable external APIs.
+- Background synchronization fetches and stores data locally.
+- MongoDB acts as the primary data store.
+- JWT secures Manager and Employee access.
+- Socket.IO provides real-time updates without page refresh.
+- Retry logic handles temporary API failures gracefully.
+
+---
+
+## Future Improvements
+
+- Redis-based distributed caching
+- Docker & Kubernetes deployment
+- CI/CD pipeline with GitHub Actions
+- Role-based permissions with granular access control
+- Monitoring using Prometheus and Grafana

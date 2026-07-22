@@ -19,7 +19,6 @@ const mappingSchema = new mongoose.Schema(
   }
 );
 
-// Prevent duplicate mappings
 mappingSchema.index(
   { employeeId: 1, clientId: 1 },
   { unique: true }

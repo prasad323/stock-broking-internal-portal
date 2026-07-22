@@ -9,12 +9,10 @@ const getEmployeeDashboard = async (req, res) => {
   try {
     const employeeId = req.user.employeeId;
 
-    // Clients assigned to employee
     const mappings = await Mapping.find({ employeeId });
 
     const clientIds = mappings.map((m) => m.clientId);
 
-    // Trades of assigned clients
     const trades = await Trade.find({
       clientId: { $in: clientIds },
     });

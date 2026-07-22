@@ -1,6 +1,5 @@
 const Trade = require("../models/trade.model");
 
-// Manager - View all incentives
 const getIncentives = async (req, res) => {
   try {
     const result = await Trade.aggregate([

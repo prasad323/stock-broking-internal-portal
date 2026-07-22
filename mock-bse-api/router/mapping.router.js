@@ -13,7 +13,6 @@ router.post("/", createMapping);
 
 router.get("/", getMappings);
 
-// My Clients
 router.get("/employee/:employeeId", getMyClients);
 
 router.delete("/:id", deleteMapping);

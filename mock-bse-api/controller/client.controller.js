@@ -1,6 +1,5 @@
 const Client = require("../model/client.model");
 
-// Create Client
 const createClient = async (req, res) => {
     try {
         const client = await Client.create(req.body);
@@ -18,7 +17,6 @@ const createClient = async (req, res) => {
     }
 };
 
-// Get All Clients
 const getClients = async (req, res) => {
     try {
         const clients = await Client.find();
@@ -36,7 +34,6 @@ const getClients = async (req, res) => {
     }
 };
 
-// Get Single Client
 const getClientById = async (req, res) => {
     try {
         const client = await Client.findOne({
@@ -62,7 +59,7 @@ const getClientById = async (req, res) => {
     }
 };
 
-// Update Client
+
 const updateClient = async (req, res) => {
     try {
         const client = await Client.findOneAndUpdate(
@@ -94,7 +91,6 @@ const updateClient = async (req, res) => {
     }
 };
 
-// Delete Client
 const deleteClient = async (req, res) => {
     try {
         const client = await Client.findOneAndDelete({

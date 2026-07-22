@@ -18,9 +18,7 @@ mongoose
 
     console.log("Old data deleted");
 
-    // -----------------------------
-    // Clients
-    // -----------------------------
+  
 
     const clients = [];
 
@@ -41,9 +39,9 @@ mongoose
 
     console.log("500 Clients Inserted");
 
-    // -----------------------------
+   
     // Employees
-    // -----------------------------
+  
 
     const employees = [];
 
@@ -62,9 +60,9 @@ mongoose
 
     console.log("20 Employees Inserted");
 
-    // -----------------------------
+    
     // Mappings
-    // -----------------------------
+  
 
     const mappings = [];
 
@@ -82,9 +80,8 @@ mongoose
 
     console.log("500 Mappings Inserted");
 
-    // -----------------------------
     // Trades
-    // -----------------------------
+
 
     const symbols = [
       "RELIANCE",

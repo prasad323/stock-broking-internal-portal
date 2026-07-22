@@ -1,6 +1,5 @@
 const Mapping = require("../models/mapping.model");
 
-// Create Mapping
 const createMapping = async (req, res) => {
   try {
     const mapping = await Mapping.create(req.body);
@@ -111,92 +110,6 @@ const getMappings = async (req, res) => {
   }
 };
 
-
-// const getMappings = async (req, res) => {
-//   try {
-//     const page = parseInt(req.query.page) || 1;
-//     const limit = parseInt(req.query.limit) || 5;
-//     const search = req.query.search || "";
-
-//     const pipeline = [];
-
-//     if (search) {
-//       pipeline.push({
-//         $match: {
-//           clientId: {
-//             $regex: search,
-//             $options: "i",
-//           },
-//         },
-//       });
-//     }
-
-//     pipeline.push(
-//       {
-//         $lookup: {
-//           from: "clients",
-//           localField: "clientId",
-//           foreignField: "clientId",
-//           as: "client",
-//         },
-//       },
-//       {
-//         $unwind: "$client",
-//       },
-//       {
-//         $lookup: {
-//           from: "employees",
-//           localField: "employeeId",
-//           foreignField: "employeeId",
-//           as: "employee",
-//         },
-//       },
-//       {
-//         $unwind: "$employee",
-//       }
-//     );
-
-//     const totalResult = await Mapping.aggregate([
-//       ...pipeline,
-//       { $count: "total" },
-//     ]);
-
-//     const total =
-//       totalResult.length > 0 ? totalResult[0].total : 0;
-
-//     const mappings = await Mapping.aggregate([
-//       ...pipeline,
-//       {
-//         $project: {
-//           _id: 1,
-//           clientId: 1,
-//           clientName: "$client.name",
-//           employeeId: 1,
-//           employeeName: "$employee.name",
-//         },
-//       },
-//       {
-//         $skip: (page - 1) * limit,
-//       },
-//       {
-//         $limit: limit,
-//       },
-//     ]);
-
-//     res.status(200).json({
-//       success: true,
-//       total,
-//       page,
-//       totalPages: Math.ceil(total / limit),
-//       data: mappings,
-//     });
-//   } catch (err) {
-//     res.status(500).json({
-//       success: false,
-//       message: err.message,
-//     });
-//   }
-// };
 
 const getEmployeeMappings = async (req, res) => {
   try {

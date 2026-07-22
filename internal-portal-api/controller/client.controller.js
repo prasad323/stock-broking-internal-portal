@@ -46,7 +46,6 @@ const getMyClients = async (req, res) => {
     const limit = parseInt(req.query.limit) || 5;
     const search = req.query.search || "";
 
-    // Get mapped client IDs
     const mappings = await Mapping.find({ employeeId });
 
     const clientIds = mappings.map((m) => m.clientId);

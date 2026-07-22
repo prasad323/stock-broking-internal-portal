@@ -4,7 +4,6 @@ const User = require("../models/user.model");
 
 const generateToken = require("../utils/generateToken");
 
-// Register
 
 const register = async (req, res) => {
   try {
@@ -41,7 +40,7 @@ const register = async (req, res) => {
   }
 };
 
-// Login
+
 
 const login = async (req, res) => {
   try {

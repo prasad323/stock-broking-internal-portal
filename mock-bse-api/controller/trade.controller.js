@@ -1,6 +1,5 @@
 const Trade = require("../model/trade.model");
 
-// Create Trade
 const createTrade = async (req, res) => {
   try {
     const trade = await Trade.create(req.body);
@@ -18,7 +17,6 @@ const createTrade = async (req, res) => {
   }
 };
 
-// Get All Trades + Filters
 const getTrades = async (req, res) => {
   try {
     const { clientId, from, to } = req.query;
@@ -58,7 +56,6 @@ const getTrades = async (req, res) => {
   }
 };
 
-// Get Single Trade
 const getTradeById = async (req, res) => {
   try {
     const trade = await Trade.findOne({
@@ -84,7 +81,6 @@ const getTradeById = async (req, res) => {
   }
 };
 
-// Update Trade
 const updateTrade = async (req, res) => {
   try {
     const trade = await Trade.findOneAndUpdate(
@@ -116,7 +112,6 @@ const updateTrade = async (req, res) => {
   }
 };
 
-// Delete Trade
 const deleteTrade = async (req, res) => {
   try {
     const trade = await Trade.findOneAndDelete({

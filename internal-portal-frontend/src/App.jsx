@@ -21,50 +21,50 @@ function App() {
         <Route path="/" element={<Navigate to="/login" />} />
 
         <Route path="/login" element={<Login />} />
-        
-        
-       <Route
-  path="/manager/incentives"
-  element={
-    <PrivateRoute role="manager">
-      <Incentives />
-    </PrivateRoute>
-  }
-/>
-<Route path="*" element={<NotFound />} />
-<Route
-  path="/employee/my-incentives"
-  element={
-    <PrivateRoute role="employee">
-      <MyIncentives />
-    </PrivateRoute>
-  }
-/>
-<Route
-  path="/employee/my-clients"
-  element={
-    <PrivateRoute role="employee">
-      <MyClients />
-    </PrivateRoute>
-  }
-/>
-        <Route
-  path="/manager/trades"
-  element={
-    <PrivateRoute role="manager">
-      <Trades />
-    </PrivateRoute>
-  }
-/>
 
-<Route
-  path="/manager/mappings"
-  element={
-    <PrivateRoute role="manager">
-      <Mappings />
-    </PrivateRoute>
-  }
-/>
+
+        <Route
+          path="/manager/incentives"
+          element={
+            <PrivateRoute role="manager">
+              <Incentives />
+            </PrivateRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+        <Route
+          path="/employee/my-incentives"
+          element={
+            <PrivateRoute role="employee">
+              <MyIncentives />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/employee/my-clients"
+          element={
+            <PrivateRoute role="employee">
+              <MyClients />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/manager/trades"
+          element={
+            <PrivateRoute role="manager">
+              <Trades />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/manager/mappings"
+          element={
+            <PrivateRoute role="manager">
+              <Mappings />
+            </PrivateRoute>
+          }
+        />
         {/* Manager Routes */}
 
         <Route

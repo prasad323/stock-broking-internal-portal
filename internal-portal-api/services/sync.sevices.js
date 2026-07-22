@@ -10,9 +10,8 @@ const Mapping = require("../models/mapping.model");
 const syncData = async (io) => {
   try {
 
-    // ===================== Clients =====================
     const clientsResponse = await retry(() =>
-      axios.get("http://localhost:3000/api/clients")
+       axios.get("https://mock-bse-apii.onrender.com/api/clients")
     );
 
     const clients = clientsResponse.data.data;
@@ -29,9 +28,8 @@ const syncData = async (io) => {
 
     console.log("Clients Synced");
 
-    // ===================== Trades =====================
     const tradesResponse = await retry(() =>
-      axios.get("http://localhost:3000/api/trades")
+     axios.get("https://mock-bse-apii.onrender.com/api/trades")
     );
 
     const trades = tradesResponse.data.data;
@@ -48,9 +46,8 @@ const syncData = async (io) => {
 
     console.log("Trades Synced");
 
-    // ===================== Employees =====================
     const employeesResponse = await retry(() =>
-      axios.get("http://localhost:3000/api/employees")
+      axios.get("https://mock-bse-apii.onrender.com/api/employees")
     );
 
     const employees = employeesResponse.data.data;
@@ -67,9 +64,8 @@ const syncData = async (io) => {
 
     console.log("Employees Synced");
 
-    // ===================== Mappings =====================
     const mappingsResponse = await retry(() =>
-      axios.get("http://localhost:3000/api/mappings")
+      axios.get("https://mock-bse-apii.onrender.com/api/mappings")
     );
 
     const mappings = mappingsResponse.data.data;
